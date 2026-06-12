@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+}
+
+/* Custom Scrollbar in Windows 10 style */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4e4e4e;
+    border: 2px solid #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7a7a7a;
+}
+
+/* Windows 10 Acrylic Acrylic/Blur Style */
+.acrylic-bg {
+    background: rgba(20, 20, 20, 0.65);
+    backdrop-filter: blur(24px) saturate(125%);
+    -webkit-backdrop-filter: blur(24px) saturate(125%);
+}
+
+.acrylic-bg-light {
+    background: rgba(245, 245, 245, 0.7);
+    backdrop-filter: blur(24px) saturate(120%);
+    -webkit-backdrop-filter: blur(24px) saturate(120%);
+}
+
+/* Minimize/Restore Animations */
+@keyframes window-open {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-window-open {
+    animation: window-open 0.18s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+/* Custom CSS for 88x31 badges hover effect */
+.pixel-badge {
+    image-rendering: pixelated;
+    transition: all 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+.pixel-badge:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
