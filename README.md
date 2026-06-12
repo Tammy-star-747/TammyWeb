@@ -43,6 +43,5 @@
 *   `[src/index.css](src/index.css)`：Tailwind 載入、自訂滾動條與視窗放大淡入特效 CSS。
 *   `[src/App.tsx](src/App.tsx)`：**頂層全局系統控制器**，調度桌面、多重視窗狀態、搜尋引擎與工作列。
 *   `[src/components/](src/components/)`：系統公用主視覺面板群 (Window、Taskbar、StartMenu、CalendarFlyout、DesktopIcon)。
-*   `[src/apps/](src/apps/)`：移植自 `maiware.cc` 的應用程式詳細內容卡頁。
 
 ---
