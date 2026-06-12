@@ -52,6 +52,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+<<<<<<< HEAD
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+=======
+      
+name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+>>>>>>> 3eaa7c9a8d472cf0c12c17d9b24a779dde6ea878

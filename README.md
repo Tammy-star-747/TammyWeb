@@ -46,25 +46,3 @@
 *   `[src/apps/](src/apps/)`：移植自 `maiware.cc` 的應用程式詳細內容卡頁。
 
 ---
-
-## 🚀 本地開發與啟動步驟 (Setup & Command Guide)
-
-### 1. 安裝系統依賴項目
-在您的終端機/命令提示字元 (PowerShell / CMD) 中定位至專案根目錄，執行以下命令：
-```bash
-npm install
-```
-
-### 2. 開啟本地開發伺服器
-執行以下命令啟動 Vite 本地開發，將為您秒級架設虛擬伺服器：
-```bash
-    npm run dev
-```
-啟動後可以在瀏覽器點開 URL (例如 `http://localhost:5173`) 來完整體驗 Windows 10 互動平台。
-
-### 3. 生成生產環境靜態打包網頁
-當需要部署至 GitHub Pages 或其他免費 HTML 託管平台時，執行：
-```bash
-npm run build
-```
-系統將編譯所有 React 主組件，並在 `dist/` 資料夾下自動輸出經過超輕量壓縮的 `index.html` 以及 CSS & JS 靜態檔案，開箱即用之最佳效能體驗！
