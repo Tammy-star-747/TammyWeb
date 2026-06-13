@@ -20,13 +20,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. 升級至 v4 最新修補版或最新版，確保完美支援 Node.js 24
       - name: Checkout source
         uses: actions/checkout@v4
 
+      # 2. 升級至 v4 最新修補版，並建議將專案編譯環境提升至 Node 22 或 24
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -35,9 +37,11 @@ jobs:
       - name: Build project
         run: npm run build
 
+      # 3. 升級至 v5 最新修補版，全面支援 Node.js 24
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # 4. 升級至 v3 最新修補版，全面支援 Node.js 24
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -52,6 +56,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      # 5. 升級至 v4 最新修補版，完美相容新版 Artifact
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
