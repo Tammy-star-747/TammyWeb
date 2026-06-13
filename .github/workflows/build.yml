@@ -20,13 +20,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. 升級至 v4 最新修補版或最新版，確保完美支援 Node.js 24
+      # 1. 升級至 v4 (確保拉取最新相容 Node 24 的次版本修補)
       - name: Checkout source
         uses: actions/checkout@v4
 
-      # 2. 升級至 v4 最新修補版，並建議將專案編譯環境提升至 Node 22 或 24
+      # 2. 升級至 v5 (官方已更新此版本核心至 Node.js 24)
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
@@ -37,11 +37,11 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # 3. 升級至 v5 最新修補版，全面支援 Node.js 24
+      # 3. 升級至 v5 (確保相容 Node 24 執行環境)
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 4. 升級至 v3 最新修補版，全面支援 Node.js 24
+      # 4. 使用專門的 Pages 上傳組件 v3 (解決原始警告中的 upload-artifact 舊版本問題)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -56,7 +56,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      # 5. 升級至 v4 最新修補版，完美相容新版 Artifact
+      # 5. 升級至 v4 (確保 deploy 步驟的執行環境完全切換至 Node 24)
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
