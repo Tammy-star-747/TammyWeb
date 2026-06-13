@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { Volume2, Wifi, MessageSquare } from 'lucide-react';
 
 interface TaskbarProps {
@@ -113,7 +113,7 @@ export const Taskbar: React.FC<TaskbarProps> = ({
             </div>
 
             {/* 3. 右側：系統狀態托盤列 */}
-            <div className="flex items-center h-full text-neutral-650 flex-shrink-0 font-semibold text-shadow-sm pr-1">
+            <div className="flex items-center h-full text-neutral-650 flex-shrink-0 font-semibold pr-1">
 
                 {/* === 新增：語言切換下拉選單觸發按鈕 === */}
                 <div className="relative pr-1" ref={langMenuRef}>

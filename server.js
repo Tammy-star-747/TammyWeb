@@ -1,4 +1,4 @@
-import express from 'express';
+﻿import express from 'express';
 import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 3001; // 模擬後端伺服器端口
+const PORT = Number(process.env.PORT || 3001); // 支援雲端平台動態分配的埠號
 
 app.use(cors());
 app.use(express.json());
@@ -87,6 +87,7 @@ app.post('/api/track', (req, res) => {
     // 將新紀錄附加在最前面
     const updatedLogs = [newEntry, ...currentLogs];
     writeExcelData(updatedLogs);
+    console.log(`偵測到訪客 IP：${ip} | ${country || '未識別地區'} | ${region || '未識別區域'}`);
 
     res.json({ success: true, entry: newEntry });
 });
@@ -114,6 +115,6 @@ app.get('/api/download-excel', (req, res) => {
 
 // 啟動伺服器監聽
 app.listen(PORT, () => {
-    console.log(`後端 Express 伺服器已啟動！監聽端口 http://localhost:${PORT}`);
+    console.log(`後端 Express 伺服器已啟動！監聽埠號 ${PORT}`);
     console.log(`IP 紀錄資料庫將自動匯入保存至：${excelPath}`);
 });

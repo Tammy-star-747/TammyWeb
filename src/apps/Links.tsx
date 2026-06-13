@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { ArrowRight, GalleryThumbnailsIcon, Globe } from 'lucide-react';
 
 interface LinksProps {

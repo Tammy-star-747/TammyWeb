@@ -1,4 +1,4 @@
-export interface WindowState {
+﻿export interface WindowState {
     id: string;
     title: string;
     isOpen: boolean;

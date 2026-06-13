@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { User, FileText, Image as ImageIcon, Power, Github, Twitter, Linkedin, ExternalLink, Sun, CloudRain, Cloud, CloudLightning } from 'lucide-react';
+﻿import React, { useState, useEffect } from 'react';
+import { User, FileText, Image as ImageIcon, Power, Code, Globe, Share2, ExternalLink, Sun, CloudRain, Cloud, CloudLightning } from 'lucide-react';
 
 interface StartMenuProps {
     isOpen: boolean;      // 開始選單展開布林狀態
@@ -62,32 +62,51 @@ export const StartMenu: React.FC<StartMenuProps> = ({
         };
 
         // 啟動定位判定
-        const startLocateAndWeather = () => {
+        const fetchLocationAndWeather = async () => {
+            const defaultLat = 25.033;
+            const defaultLon = 121.564;
+            const defaultCity = isEn ? 'Taipei' : '台北市';
+
+            if (!active) return;
+
+            // 優先使用瀏覽器地理定位
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
-                    async (pos) => {
+                    (pos) => {
                         if (!active) return;
-                        const lat = pos.coords.latitude;
-                        const lon = pos.coords.longitude;
-                        let customName = isEn ? 'My Location' : '所在地區';
-                        fetchWeather(lat, lon, customName);
+                        fetchWeather(pos.coords.latitude, pos.coords.longitude, isEn ? 'My Location' : '所在地區');
                     },
-                    async () => {
-                        try {
-                            const locRes = await fetch('https://ipapi.co/json/');
-                            const locData = await locRes.json();
-                            if (locData.city && active) {
-                                fetchWeather(locData.latitude, locData.longitude, locData.city);
-                            }
-                        } catch (err) {
-                            fetchWeather(25.033, 121.564, isEn ? 'Taipei' : '台北市');
-                        }
+                    () => {
+                        // 地理定位失敗，使用 IP 反向查詢
+                        fetchIPLocation().catch(() => {
+                            fetchWeather(defaultLat, defaultLon, defaultCity);
+                        });
                     },
                     { timeout: 5000 }
                 );
             } else {
-                fetchWeather(25.033, 121.564, isEn ? 'Taipei' : '台北市');
+                // 瀏覽器不支援地理定位，使用 IP 反向查詢
+                fetchIPLocation().catch(() => {
+                    fetchWeather(defaultLat, defaultLon, defaultCity);
+                });
             }
+        };
+
+        const fetchIPLocation = async () => {
+            const ipRes = await fetch('https://api.ipify.org?format=json');
+            const ipData = await ipRes.json() as any;
+            const geoRes = await fetch(`https://freeipapi.com/api/json/${ipData.ip}`);
+            const geoData = await geoRes.json() as any;
+
+            if (!active) return;
+            const lat = parseFloat(geoData.latitude) || 25.033;
+            const lon = parseFloat(geoData.longitude) || 121.564;
+            const city = geoData.city || (isEn ? 'Taipei' : '台北市');
+            fetchWeather(lat, lon, city);
+        };
+
+        const startLocateAndWeather = () => {
+            fetchLocationAndWeather();
         };
 
         if (isOpen) {
@@ -246,7 +265,7 @@ export const StartMenu: React.FC<StartMenuProps> = ({
                     className="col-span-2 bg-[#2d333b] hover:bg-neutral-850 text-white transition-colors duration-155 p-3 h-24 flex flex-col justify-between cursor-pointer group shadow"
                 >
                     <div className="flex justify-between items-start">
-                        <Github size={24} />
+                        <Code size={24} />
                     </div>
                     <span className="text-[12px] font-bold truncate group-hover:translate-x-1 transition-transform">
                         {isEn ? 'View GitHub Repo' : '前往 GitHub 倉庫'}
@@ -260,7 +279,7 @@ export const StartMenu: React.FC<StartMenuProps> = ({
                     rel="noopener noreferrer"
                     className="col-span-1 bg-sky-500 hover:bg-sky-600 text-white transition-colors duration-155 p-3 h-24 flex flex-col justify-between cursor-pointer group shadow"
                 >
-                    <Twitter size={20} />
+                    <Share2 size={20} />
                     <span className="text-[10px] font-bold group-hover:scale-105 transition-transform text-center pt-2">
                         {isEn ? 'Twitter' : '社群 Twitter'}
                     </span>
@@ -274,7 +293,7 @@ export const StartMenu: React.FC<StartMenuProps> = ({
                     className="col-span-3 bg-[#0077b5] hover:bg-[#006097] text-white transition-colors duration-155 p-3 h-20 flex flex-col justify-between cursor-pointer group shadow"
                 >
                     <div className="flex justify-between items-start">
-                        <Linkedin size={24} />
+                        <Globe size={24} />
                     </div>
                     <span className="text-[12px] font-bold truncate group-hover:translate-x-1 transition-transform">
                         {isEn ? 'Connect on LinkedIn' : '加入 LinkedIn 專家朋友圈'}

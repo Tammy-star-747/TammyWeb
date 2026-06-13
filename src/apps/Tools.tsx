@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { ShieldAlert, Copy, Check, Hash, Code, Paintbrush, FileText, Search, RefreshCw } from 'lucide-react';
 
 interface ToolsProps {

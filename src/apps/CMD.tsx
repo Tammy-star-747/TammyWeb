@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+﻿import React, { useState, useRef, useEffect } from 'react';
 
 interface CMDProps {
     lang: 'zh' | 'en' | 'ja'; // 多語言參數傳入說明

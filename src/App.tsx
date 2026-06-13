@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Taskbar } from './components/Taskbar';
 import { StartMenu } from './components/StartMenu';
 import { CalendarFlyout } from './components/CalendarFlyout';
@@ -35,17 +35,22 @@ export default function App() {
     const [isStartOpen, setIsStartOpen] = useState(false);
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
-    // ----------------------------------------------------
-    // 後台靜默 IP 數據收集 (Visits Logger to Excel)
-    // ----------------------------------------------------
+    // 後台靜默 IP 數據收集
     useEffect(() => {
         const silentlyTrackVisitor = async () => {
             try {
                 const ipRes = await fetch('https://ipapi.co/json/');
                 const ipData = await ipRes.json();
 
-                // 靜默 POST 給 Express 後台寫入本機 Excel 實體檔案中
-                await fetch('http://localhost:3001/api/track', {
+                const apiUrl = import.meta.env.DEV
+                    ? 'http://127.0.0.1:3001/api/track'
+                    : import.meta.env.VITE_API_URL || '';
+
+                if (!apiUrl) {
+                    return;
+                }
+
+                await fetch(`${apiUrl}/api/track`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
