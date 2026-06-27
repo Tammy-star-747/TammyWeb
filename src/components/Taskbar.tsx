@@ -94,7 +94,7 @@ export const Taskbar: React.FC<TaskbarProps> = ({
                             }}
                             className={`flex items-center space-x-2 px-3.5 h-[40px] transition-all relative border border-transparent rounded-sm flex-shrink-0 duration-100 ${isActive
                                 ? 'bg-neutral-200 bg-opacity-90 text-neutral-900 font-bold border-neutral-350 shadow-sm'
-                                : 'bg-transparent text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
+                                : 'bg-transparent text-neutral-750 hover:bg-neutral-100 hover:text-neutral-950'
                                 }`}
                         >
                             <span className="text-lg leading-none">{app.iconName}</span>
@@ -198,7 +198,7 @@ export const Taskbar: React.FC<TaskbarProps> = ({
                     title={isEn ? "System Calendar" : "系統行事曆"}
                 >
                     <span className="font-bold tabular-nums leading-none tracking-wide text-neutral-850">{timeString}</span>
-                    <span className="text-[9px] scale-90 pt-0.5 text-neutral-500 font-semibold">{dateString}</span>
+                    <span className="text-[9px] scale-90 pt-0.5 text-neutral-700 font-bold">{dateString}</span>
                 </button>
 
                 <div className="w-[4px] h-full border-l border-neutral-250 hover:bg-neutral-200 cursor-pointer" />

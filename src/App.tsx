@@ -43,7 +43,7 @@ export default function App() {
                 const ipData = await ipRes.json();
 
                 const apiUrl = import.meta.env.DEV
-                    ? 'http://127.0.0.1:3001/api/track'
+                    ? 'http://127.0.0.1:3001'
                     : import.meta.env.VITE_API_URL || '';
 
                 if (!apiUrl) {
@@ -190,6 +190,7 @@ export default function App() {
 
             {/* 2. 開始功能表動態彈出面板 */}
             <StartMenu
+                lang={activeLang}
                 isOpen={isStartOpen}
                 onClose={() => setIsStartOpen(false)}
                 apps={tabs}

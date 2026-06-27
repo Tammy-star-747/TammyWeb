@@ -63,7 +63,7 @@ export const AboutMe: React.FC<AboutMeProps> = ({ lang }) => {
                         <h1 className="text-2xl font-bold tracking-tight text-neutral-905 font-sans">
                             {isJa ? 'Tammy' : isEn ? 'Tammy' : 'Tammy'}
                         </h1>
-                        <span className="bg-[#0078d7] bg-opacity-10 text-[#0078d7] border border-blue-505 border-opacity-35 text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wide select-none">
+                        <span className="bg-[#ADD8E6] bg-opacity-10 text-[#000000] border border-blue-505 border-opacity-35 text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wide select-none">
                             {isJa ? 'フルスタックエンジニア' : isEn ? 'Full Stack Developer' : '全端開發工程師'}
                         </span>
                     </div>
@@ -83,7 +83,12 @@ export const AboutMe: React.FC<AboutMeProps> = ({ lang }) => {
                             <span>{isJa ? '日本、台湾' : isEn ? 'japan, Taiwan' : '日本，台灣'}</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                            <Mail size={13} className="text-[#0078d7] shrink-0" />
+                            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 object-contain select-none shrink-0" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="#FFFFFF" />
+                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="none" stroke="#B0B0B0" strokeWidth="1" />
+                                <path d="M22 6l-10 7L2 6" fill="none" stroke="#EA4335" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M2 6v12h4V8.5L12 12.5l6-4V18h4V6" fill="none" stroke="#EA4335" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
                             <span className="select-all">at0958105@gmail.com</span>
                         </div>
                         <div className="flex items-center space-x-2">

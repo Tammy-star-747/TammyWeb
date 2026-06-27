@@ -143,7 +143,7 @@ export const CMD: React.FC<CMDProps> = ({ lang }) => {
                         { type: 'output', text: '[システム管理者プロフィール]' },
                         { type: 'output', text: ' - ロケーション: 台湾、台北市' },
                         { type: 'output', text: ' - ロール: フルスタックWebエンジニア。Fluent磨砂ガラスの美学が大好きです。' },
-                        { type: 'output', text: ' - Eメール: admin@system.local' },
+                        { type: 'output', text: ' - Eメール: at0958105@gmail.com' },
                         { type: 'output', text: ' "projects" を入力すると作品ディレクトリをレビューできます。' }
                     ];
                 } else if (isEn) {
@@ -151,7 +151,7 @@ export const CMD: React.FC<CMDProps> = ({ lang }) => {
                         { type: 'output', text: '[System Administrator Profile]' },
                         { type: 'output', text: ' - Location: Taipei, Taiwan' },
                         { type: 'output', text: ' - Role: Full Stack Dev interested in OS UI emulations & Fluent blurs.' },
-                        { type: 'output', text: ' - Email: admin@system.local' },
+                        { type: 'output', text: ' - Email: at0958105@gmail.com' },
                         { type: 'output', text: ' Type "projects" to view his portfolios.' }
                     ];
                 } else {
@@ -159,7 +159,7 @@ export const CMD: React.FC<CMDProps> = ({ lang }) => {
                         { type: 'output', text: '[System Administrator Profile]' },
                         { type: 'output', text: ' - 位置: 台北，台灣' },
                         { type: 'output', text: ' - 角色: 全端 Web 工程師，喜歡物聯與 Fluent 現代磨砂玻璃質感。' },
-                        { type: 'output', text: ' - Email: admin@system.local' },
+                        { type: 'output', text: ' - Email: at0958105@gmail.com' },
                         { type: 'output', text: ' 輸入 "projects" 可查看他的代表作品。' }
                     ];
                 }

@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { ArrowRight, GalleryThumbnailsIcon, Globe } from 'lucide-react';
+import { ArrowRight, Globe } from 'lucide-react';
 
 interface LinksProps {
     lang: 'zh' | 'en' | 'ja'; // 多語言參數傳入
@@ -13,19 +13,15 @@ interface LinkItem {
     descEn: string;      // 英文敘述
     descJa: string;      // 日文敘述
     url: string;         // 網址
-    iconName: string;    // 表示 Emojis
+    iconName: string;    // 表示 Emojis 或者 "gmail" 等特殊標識
     color: string;       // 配色漸層
 }
 
-/**
- * Links 元件：常用連結導航看板
- * 集成使用者指定的 5 大實用程式設計與素材站點，支援中英日多語言自適應切換，配高對比明亮模式
- */
 export const Links: React.FC<LinksProps> = ({ lang }) => {
     const isEn = lang === 'en';
     const isJa = lang === 'ja';
 
-    // 配置指定的五個核心常用連結
+    // 配置指定的五個常用連結
     const list: LinkItem[] = [
         {
             title: "聯絡Tammy",
@@ -34,7 +30,7 @@ export const Links: React.FC<LinksProps> = ({ lang }) => {
             desc: "聯絡我at0958105@gmail.com",
             descEn: "Contact me at0958105@gmail.com",
             descJa: "連絡してください at0958105@gmail.com",
-            url: "https://reurl.cc/epq7YW",
+            url: "https://reurl.cc/53ezzG",
             iconName: "gmail",
             color: "from-amber-100 to-amber-200 border-amber-300 text-amber-900"
         },
@@ -96,7 +92,7 @@ export const Links: React.FC<LinksProps> = ({ lang }) => {
     ];
 
     return (
-        <div className="p-6 max-w-5xl mx-auto space-y-6 select-text text-sm pb-10 text-neutral-855 font-win">
+        <div className="p-6 max-w-5xl mx-auto space-y-6 select-text text-sm pb-10 text-neutral-800 font-win">
 
             {/* 頂部橫幅描述 */}
             <div className="flex flex-col space-y-2 border-b border-neutral-200 pb-5 select-none animate-once">
@@ -118,7 +114,7 @@ export const Links: React.FC<LinksProps> = ({ lang }) => {
                 </p>
             </div>
 
-            {/* 常用連結 5 大卡片網格展示 */}
+            {/* 常用連結卡片網格展示 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {list.map((proj, idx) => (
                     <a
@@ -133,12 +129,13 @@ export const Links: React.FC<LinksProps> = ({ lang }) => {
                             <div className="flex items-start justify-between">
                                 <div className="flex items-center space-x-3.5">
                                     <div className={`p-2 rounded bg-gradient-to-tr ${proj.color} shadow-sm w-10 h-10 flex items-center justify-center text-xl shrink-0 select-none`}>
-                                        {proj.url === "https://reurl.cc/6Gmvq5" ? (
-                                            <img
-                                                src="/google_mail_gmail_logo_icon_159346.webp"
-                                                alt="Gmail"
-                                                className="w-7 h-7 object-contain select-none pointer-events-none"
-                                            />
+                                        {proj.iconName === "gmail" ? (
+                                            <svg className="w-7 h-7 object-contain select-none pointer-events-none" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="#FFFFFF" />
+                                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="none" stroke="#B0B0B0" strokeWidth="1" />
+                                                <path d="M22 6l-10 7L2 6" fill="none" stroke="#EA4335" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                                <path d="M2 6v12h4V8.5L12 12.5l6-4V18h4V6" fill="none" stroke="#EA4335" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
                                         ) : (
                                             proj.iconName
                                         )}
@@ -148,7 +145,7 @@ export const Links: React.FC<LinksProps> = ({ lang }) => {
                                             {isJa ? proj.titleJa : isEn ? proj.titleEn : proj.title}
                                         </h3>
                                         <span className="text-[9px] text-[#0078d7] font-extrabold uppercase select-none tracking-wider">
-                                            {proj.url.replace('https://', '').split('/')[0]}
+                                            {proj.url.startsWith('mailto:') ? 'Email Client' : proj.url.replace('https://', '').split('/')[0]}
                                         </span>
                                     </div>
                                 </div>
@@ -172,6 +169,7 @@ export const Links: React.FC<LinksProps> = ({ lang }) => {
                     </a>
                 ))}
             </div>
+
         </div>
     );
 };
