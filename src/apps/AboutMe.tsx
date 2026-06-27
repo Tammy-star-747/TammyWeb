@@ -84,7 +84,7 @@ export const AboutMe: React.FC<AboutMeProps> = ({ lang }) => {
                         </div>
                         <div className="flex items-center space-x-2">
                             <Mail size={13} className="text-[#0078d7] shrink-0" />
-                            <span className="select-all">Happy10209@gmail.com</span>
+                            <span className="select-all">at0958105@gmail.com</span>
                         </div>
                         <div className="flex items-center space-x-2">
                             <BookOpen size={13} className="text-[#0078d7] shrink-0" />
